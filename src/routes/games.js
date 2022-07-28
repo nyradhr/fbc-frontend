@@ -1,4 +1,4 @@
-export default function Partite() {
+export default function Games() {
     return (
       <main style={{ padding: "1rem 0" }}>
         <h2>Partite</h2>

@@ -1,20 +1,23 @@
 import * as React from 'react';
 
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import { getAnnouncement } from '../data';
 
 export default function Announcement() {
-  let navigate = useNavigate();
+  //let navigate = useNavigate();
   let params = useParams();
-  let invoice = getAnnouncement(parseInt(params.announcementId, 10));
+  let announcement = getAnnouncement(parseInt(params.announcementId, 10));
 
   return (
     <main style={{ padding: '1rem' }}>
-      <h2>ID: {announcement.id}</h2>
-      <p>
-        {announcement.name}: {announcement.score}
-      </p>
-     
+      <h3>{announcement.id}</h3>
+      <h1>{announcement.title}</h1>
+      <h2>{announcement.score}</h2>
+      <button>Upvote</button> {/*implement functionality in accordance with DB*/}
+      <button>Downvote</button>
+      <p>{announcement.content}</p>
+      
+      {/**comments here? */}
     </main>
   );
 }
