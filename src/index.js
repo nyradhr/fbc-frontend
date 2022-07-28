@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import Announcements from "./routes/announcements"
 import Announcement from "./routes/announcement";
+import Game from "./routes/game";
 import Games from "./routes/games";
 import Tickets from "./routes/tickets";
 
@@ -28,9 +29,19 @@ root.render(
                 </main>
               }
             />
-            <Route path=":idAnnouncement" element={<Announcement />}/>
+            <Route path=":announcementId" element={<Announcement />}/>
           </Route>
-          <Route path="games" element={<Games />} />
+          <Route path="games" element={<Games />}>
+            <Route
+              index
+              element={
+                <main style={{ padding: '1rem' }}>
+                  <p>Seleziona una partita</p>
+                </main>
+              }
+            />
+            <Route path=":gameId" element={<Game />}/>
+          </Route>
           <Route path="tickets" element={<Tickets />} />
           <Route
             path="*"

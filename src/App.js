@@ -30,7 +30,6 @@ function App() {
                     <li><Link to="/tickets">Biglietti</Link></li>
                   </ul>    
               </div>
-              
           </div>
         </section>
         <nav id="query-menu" style={{ borderBottom: 'solid 1px', paddingBottom: '1rem' }}>

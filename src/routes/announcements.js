@@ -7,7 +7,6 @@ import {
   Outlet,
   useSearchParams,
 } from 'react-router-dom';
-//import { getAnnouncements } from '../data';
 
 function QueryNavLink({ to, ...props }) {
   let location = useLocation();
