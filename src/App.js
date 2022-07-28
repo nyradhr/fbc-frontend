@@ -1,4 +1,5 @@
 import './App.css';
+import { Link } from "react-router-dom";
 
 function App() {
   return (
@@ -7,19 +8,33 @@ function App() {
         <section id="topRow">
           <div className="App">
             <header className="App-header">
-              <h1>Avellino Football Club</h1>
-              <h2>Segui la tua squadra del cuore!</h2>
+              <div className ="rectangle">
+                <p className = "title">
+                  Avellino Football Club 
+                </p>
+                <p className = "subtitle">
+                  Segui la tua squadra del cuore!
+                </p>
+              </div>
             </header>
           </div>
           <div className="menu-holder">
             <div className="logo">
                 <img src="./img/logo.jpg" width="150" height="100" alt="logo"/>
             </div>
-            <ul className="menu">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Partite</a></li>
-              <li><a href="#">Biglietti</a></li>
-            </ul>
+               <nav
+                  style={{
+                  borderBottom: "solid 1px",
+                  paddingBottom: "1rem",
+                  }}
+              >     
+              <ul className="menu">
+              <Link to="/Home">Home</Link> |{" "}
+              <Link to="/Partite">Partite</Link> 
+              <Link to="/Biglietti">Biglietti</Link>
+            </ul>    
+                </nav>
+                <Outlet />
           </div>
         </section>
         <section id="presentation">
