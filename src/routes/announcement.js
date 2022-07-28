@@ -1,23 +1,25 @@
-import * as React from 'react';
-
+import {useEffect, useState} from 'react';
+import axios from 'axios';
 import { useParams} from 'react-router-dom';
-import { getAnnouncement } from '../data';
+
 
 export default function Announcement() {
-  //let navigate = useNavigate();
   let params = useParams();
-  let announcement = getAnnouncement(parseInt(params.announcementId, 10));
-
+  let d = parseInt(params.idAnnouncement, 10);
+  let [announcement, setAnnouncement] = useState({});
+  const loadAnnouncement = () => {
+    axios.get(`http://localhost:8080/announcements/${d}`)
+    .then((res) => setAnnouncement(res.data))
+  };
+  useEffect(loadAnnouncement, [d]);
   return (
     <main style={{ padding: '1rem' }}>
-      <h3>{announcement.id}</h3>
+      {/*<h3>{announcement.id}</h3>*/}
       <h1>{announcement.title}</h1>
       <h2>{announcement.score}</h2>
-      <button>Upvote</button> {/*implement functionality in accordance with DB*/}
+      <button>Upvote</button> 
       <button>Downvote</button>
       <p>{announcement.content}</p>
-      
-      {/**comments here? */}
     </main>
   );
 }

@@ -8,10 +8,10 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Annunci from "./routes/announcements"
-import Annuncio from "./routes/announcement";
-import Partite from "./routes/games";
-import Biglietti from "./routes/tickets";
+import Announcements from "./routes/announcements"
+import Announcement from "./routes/announcement";
+import Games from "./routes/games";
+import Tickets from "./routes/tickets";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,7 +19,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}> 
-          <Route path="announcements" element={<Annunci />}>
+          <Route path="announcements" element={<Announcements />}>
             <Route
               index
               element={
@@ -28,10 +28,10 @@ root.render(
                 </main>
               }
             />
-            <Route path=":announcementId" element={<Annuncio />}/>
+            <Route path=":idAnnouncement" element={<Announcement />}/>
           </Route>
-          <Route path="games" element={<Partite />} />
-          <Route path="tickets" element={<Biglietti />} />
+          <Route path="games" element={<Games />} />
+          <Route path="tickets" element={<Tickets />} />
           <Route
             path="*"
             element={

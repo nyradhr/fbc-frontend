@@ -3,21 +3,21 @@
  */
  let announcements = [
     {
-      id: "01",
+      id: 1,
       title: "Avellino - Roma",
       content: "Rimpiazziamo la Lazio per il derby!",
       score: "56"
     },
     {
-      id: "02",
+      id: 2,
       title: "Avellino in Coppa Uefa!",
       content: "Complimenti a tutti!",
       score: "213123124"
     },
     {
-      id: "03",
+      id: 3,
       title: "Avellino compra Ronaldo!",
-      content: "Incredibilie!!!!",
+      content: "Incredibile!!!!",
       score: "1231231"
     },
   ];

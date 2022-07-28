@@ -1,4 +1,5 @@
-import * as React from 'react';
+import {useEffect, useState} from 'react';
+import axios from 'axios';
 
 import {
   useLocation,
@@ -6,7 +7,7 @@ import {
   Outlet,
   useSearchParams,
 } from 'react-router-dom';
-import { getAnnouncements } from '../data';
+//import { getAnnouncements } from '../data';
 
 function QueryNavLink({ to, ...props }) {
   let location = useLocation();
@@ -14,9 +15,13 @@ function QueryNavLink({ to, ...props }) {
 }
 
 export default function Announcements() {
-  let announcements = getAnnouncements();
   let [searchParams, setSearchParams] = useSearchParams({ replace: true });
-
+  const loadAnnouncements = () => {
+    axios.get("http://localhost:8080/announcements")
+    .then((res) => setAnnouncements(res.data))
+  };
+  let [announcements, setAnnouncements] = useState([]);
+  useEffect(loadAnnouncements, []);
   return (
     <div style={{ display: 'flex' }}>
       <nav style={{ borderRight: 'solid 1px', padding: '1rem' }}>

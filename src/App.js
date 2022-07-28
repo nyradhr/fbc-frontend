@@ -1,5 +1,6 @@
 import './App.css';
 import { Outlet, Link } from "react-router-dom";
+import logo from './img/logo.jpg';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
           </div>
           <div className="menu-holder">
             <div className="logo">
-                <img src="./img/logo.jpg" width="150" height="100" alt="logo"/>
+                <img src={logo} width="150" height="100" alt="logo"/>
             </div>
               <div>     
                   <ul className="menu">
