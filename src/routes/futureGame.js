@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import axios from 'axios';
-import { useParams, useNavigate} from 'react-router-dom';
+import { useParams, useNavigate, Outlet} from 'react-router-dom';
 
 export default function FutureGame() {
   let params = useParams();
@@ -20,6 +20,7 @@ export default function FutureGame() {
       <p>Prezzo curva: {game.standCost}</p>
       <p>Prezzo tribuna: {game.galleryCost}</p>
       <button onClick = {() => navigate("buyTicket")}>Compra biglietto</button>
+      <Outlet />
     </main>
   );
 }

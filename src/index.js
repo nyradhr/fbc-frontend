@@ -53,8 +53,9 @@ root.render(
               element={<Tickets />}>
             </Route>
             <Route path="buyTickets" element={<BuyTickets />}>
-              <Route path=":futureGameId" element={<FutureGame />} />
-              <Route path="buyTicket" element={<BuyTicket />}/>
+              <Route path=":futureGameId" element={<FutureGame />}>
+                <Route path="buyTicket" element={<BuyTicket />}/>
+              </Route>
             </Route>
             <Route path="soldTickets" element={<SoldTickets />}>
               <Route
