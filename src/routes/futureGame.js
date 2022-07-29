@@ -4,7 +4,7 @@ import { useParams, useNavigate} from 'react-router-dom';
 
 export default function FutureGame() {
   let params = useParams();
-  let id = parseInt(params.gameId, 10);
+  let id = parseInt(params.futureGameId, 10);
   let [game, setGame] = useState({});
   const loadGame = () => {
     axios.get(`http://localhost:8080/games/${id}`)

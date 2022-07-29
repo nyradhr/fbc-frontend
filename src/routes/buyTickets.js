@@ -38,13 +38,13 @@ export default function BuyTickets() {
         {futureGames
           .filter((game) => {
             let filter = searchParams.get('filter');
-            if (!filter) return false;
+            if (!filter) return true;
             let opposingTeam = game.opposingTeam.toLowerCase();
             return opposingTeam.includes(filter.toLowerCase());
           })
-          .map((game) => (
+          .map((futureGame) => (
             <QueryNavLink
-              key={game.id}
+              key={futureGame.id}
               style={({ isActive }) => {
                 return {
                   display: 'block',
@@ -52,9 +52,9 @@ export default function BuyTickets() {
                   color: isActive ? 'red' : '',
                 };
               }}
-              to={`/games/${game.id}`}
+              to={`/tickets/buyTickets/${futureGame.id}`}
             >
-              {game.opposingTeam} {game.gameDate}
+              {futureGame.opposingTeam} {futureGame.gameDate}
             </QueryNavLink>
           ))}
       </nav>

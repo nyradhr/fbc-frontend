@@ -16,7 +16,7 @@ export default function Game() {
       <h1>{game.opposingTeam}</h1>
       <h2>{game.gameDate}</h2>
       <h3>{game.stadium}</h3>
-      <p>{game.ourScore} - {game.opposingScore}</p>
+      <p>AVELLINO: {game.ourScore} - {game.opposingTeam}: {game.opposingScore}</p>
     </main>
   );
 }

@@ -10,12 +10,14 @@ import {
 } from "react-router-dom";
 import Announcements from "./routes/announcements"
 import Announcement from "./routes/announcement";
-import Game from "./routes/game";
 import Games from "./routes/games";
-import SoldTickets from "./routes/soldTickets";
+import Game from "./routes/game";
+import FutureGame from "./routes/futureGame";
+import Tickets from "./routes/tickets";
 import Ticket from "./routes/ticket";
 import BuyTickets from "./routes/buyTickets.js";
-import Tickets from "./routes/tickets";
+import BuyTicket from "./routes/buyTicket.js";
+import SoldTickets from "./routes/soldTickets";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -49,11 +51,10 @@ root.render(
             <Route
               index
               element={<Tickets />}>
-
             </Route>
-
             <Route path="buyTickets" element={<BuyTickets />}>
-
+              <Route path=":futureGameId" element={<FutureGame />} />
+              <Route path="buyTicket" element={<BuyTicket />}/>
             </Route>
             <Route path="soldTickets" element={<SoldTickets />}>
               <Route
