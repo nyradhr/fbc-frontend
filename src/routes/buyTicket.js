@@ -6,7 +6,7 @@ export default function BuyTicket() {
 
     return(
         <main>
-            <p>PROVA</p>
+            <p>Biglietto Acquistato!</p>
         </main>
 
     );
