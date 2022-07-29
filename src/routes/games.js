@@ -22,11 +22,18 @@ export default function Games() {
   };
   let [games, setGames] = useState([]);
   useEffect(loadGames, []);
-  
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const changeDate = ([sd, ed]) => {
+    setStartDate(sd ? new Date(sd.setUTCHours(0,0,0)) : null);
+    setEndDate(ed ? new Date(ed.setUTCHours(0,0,0)) : null);
+  };
+  //const changeEndDate = (ed) => setEndDate(ed);
+
   return (
     <div style={{ display: 'flex' }}>
       <nav style={{ borderRight: 'solid 1px', padding: '1rem' }}>
-        <TableDatePicker/>
+        <TableDatePicker onChange={changeDate} startDate={startDate} endDate={endDate}/> 
         <input
           value={searchParams.get('filter') || ''}
           onChange={(event) => {  
@@ -41,10 +48,13 @@ export default function Games() {
         {games
           .filter((game) => {
             let filter = searchParams.get('filter');
-            if (!filter) return true;
+            let date = new Date(game.gameDate);
+            date = new Date(date.setUTCHours(0,0,0));
             let opposingTeam = game.opposingTeam.toLowerCase();
-            //let date = game.gameDate;
-            return opposingTeam.includes(filter.toLowerCase());
+            //console.log('date'+date);
+            //console.log('startDate'+startDate);
+            //console.log('endDate'+endDate);
+            return (!filter || opposingTeam.includes(filter.toLowerCase())) && date <= endDate && date >= startDate;
           })
           .map((game) => (
             <QueryNavLink
