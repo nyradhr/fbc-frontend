@@ -15,12 +15,12 @@ function QueryNavLink({ to, ...props }) {
 
 export default function BuyTickets() {
   let [searchParams, setSearchParams] = useSearchParams({ replace: true });
-  const loadTickets = () => {
-    axios.get("http://localhost:8080/tickets")
-      .then((res) => setTickets(res.data))
+  const loadFutureGames = () => {
+    axios.get("http://localhost:8080/games?future=true")
+      .then((res) => setFutureGames(res.data))
   };
-  let [tickets, setTickets] = useState([]);
-  useEffect(loadTickets, []);
+  let [futureGames, setFutureGames] = useState([]);
+  useEffect(loadFutureGames, []);
   return (
     <div style={{ display: 'flex' }}>
       <nav style={{ borderRight: 'solid 1px', padding: '1rem' }}>
@@ -35,16 +35,16 @@ export default function BuyTickets() {
             }
           }}
         />
-        {tickets
-          .filter((ticket) => {
+        {futureGames
+          .filter((game) => {
             let filter = searchParams.get('filter');
             if (!filter) return false;
-            let recipient = ticket.recipient.toLowerCase();
-            return recipient.includes(filter.toLowerCase());
+            let opposingTeam = game.opposingTeam.toLowerCase();
+            return opposingTeam.includes(filter.toLowerCase());
           })
-          .map((ticket) => (
+          .map((game) => (
             <QueryNavLink
-              key={ticket.id}
+              key={game.id}
               style={({ isActive }) => {
                 return {
                   display: 'block',
@@ -52,9 +52,9 @@ export default function BuyTickets() {
                   color: isActive ? 'red' : '',
                 };
               }}
-              to={`/soldTickets/${ticket.id}`}
+              to={`/games/${game.id}`}
             >
-              {ticket.recipient} - {ticket.opposingTeam} {ticket.gameDate}
+              {game.opposingTeam} {game.gameDate}
             </QueryNavLink>
           ))}
       </nav>
