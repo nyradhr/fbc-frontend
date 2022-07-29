@@ -6,14 +6,16 @@ import reportWebVitals from './reportWebVitals';
 import {
   BrowserRouter,
   Routes,
-  Route,
+  Route
 } from "react-router-dom";
 import Announcements from "./routes/announcements"
 import Announcement from "./routes/announcement";
 import Game from "./routes/game";
 import Games from "./routes/games";
-import Tickets from "./routes/tickets";
+import SoldTickets from "./routes/soldTickets";
 import Ticket from "./routes/ticket";
+import BuyTickets from "./routes/buyTickets.js";
+import Tickets from "./routes/tickets";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -43,16 +45,27 @@ root.render(
             />
             <Route path=":gameId" element={<Game />} />
           </Route>
-          <Route path="tickets" element={<Tickets />}>
+          <Route path="tickets" >
             <Route
               index
-              element={
-                <main style={{ padding: '1rem' }}>
-                  <p>Seleziona un biglietto</p>
-                </main>
-              }
-            />
-            <Route path=":ticketId" element={<Ticket />} />
+              element={<Tickets />}>
+
+            </Route>
+
+            <Route path="buyTickets" element={<BuyTickets />}>
+
+            </Route>
+            <Route path="soldTickets" element={<SoldTickets />}>
+              <Route
+                index
+                element={
+                  <main style={{ padding: '1rem' }}>
+                    <p>Seleziona un biglietto</p>
+                  </main>
+                }
+              />
+              <Route path=":ticketId" element={<Ticket />} />
+            </Route>
           </Route>
           <Route
             path="*"
